@@ -37,30 +37,27 @@
     background-color: #333;
     border-radius: 50%;
     align-self: center;
-}
+    &.pos-top-1 {
+        grid-area: top-1;
+    }
+    &.pos-top-3 {
+        grid-area: top-3;
+    }
 
-.dot.pos-top-1 {
-    grid-area: top-1;
-}
-
-.dot.pos-top-3 {
-    grid-area: top-3;
-}
-.dot.pos-mid-1 {
-    grid-area: mid-1;
-}
-
-.dot.pos-mid-3 {
-    grid-area: mid-3;
-}
-.dot.pos-bot-1 {
-    grid-area: bot-1;
-}
-.dot.pos-bot-2 {
-    grid-area: bot-2;
-}
-
-.dot.pos-bot-3 {
-    grid-area: bot-3;
+    &.pos-mid-1 {
+        grid-area: mid-1;
+    }
+    &.pos-mid-3 {
+        grid-area: mid-3;
+    }
+    &.pos-bot-1 {
+        grid-area: bot-1;
+    }
+    &.pos-bot-2 {
+        grid-area: bot-2;
+    }
+    &.pos-bot-3 {
+        grid-area: bot-3;
+    }
 }
 </style>
