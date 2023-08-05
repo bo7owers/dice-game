@@ -6,6 +6,7 @@ import Dietwo from '@/components/Dietwo.vue'
 <template>
     <main>
         <Die />
+        <hr />
         <Dietwo />
     </main>
 </template>
