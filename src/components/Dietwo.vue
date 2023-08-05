@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 // based of https://codepen.io/SteveJRobertson/pen/zxEwrK
 let cube = document.querySelector('#cube')
 
@@ -14,20 +15,19 @@ let max = 24
 //     }
 // }
 
-cube?.addEventListener('click', () => {
-    // let xRand = getRandom(max, min)
-    // let yRand = getRandom(max, min)
-    console.log('cube')
-})
-
 function getRandom(max: number, min: number) {
     return (Math.floor(Math.random() * (max - min)) + min) * 90
 }
-//Todo:  click btn
+
+const rollDie = () => {
+    let xRand = getRandom(max, min)
+    let yRand = getRandom(max, min)
+    console.log(xRand, yRand)
+}
 </script>
 <template>
     <h1>Click the dice to roll</h1>
-    <button class="btn btn-primary">Click me</button>
+    <button class="btn btn-primary" @click="rollDie">Click me</button>
     <section class="cube-container">
         <div id="cube">
             <div class="front">
@@ -151,82 +151,102 @@ h1 {
     top: 85px;
     left: 85px;
 }
+
 .back .dot1 {
     top: 45px;
     left: 45px;
 }
+
 .back .dot2 {
     top: 125px;
     left: 125px;
 }
+
 .right .dot1 {
     top: 45px;
     left: 45px;
 }
+
 .right .dot2 {
     top: 85px;
     left: 85px;
 }
+
 .right .dot3 {
     top: 125px;
     left: 125px;
 }
+
 .left .dot1 {
     top: 45px;
     left: 45px;
 }
+
 .left .dot2 {
     top: 45px;
     left: 125px;
 }
+
 .left .dot3 {
     top: 125px;
     left: 45px;
 }
+
 .left .dot4 {
     top: 125px;
     left: 125px;
 }
+
 .top .dot1 {
     top: 45px;
     left: 45px;
 }
+
 .top .dot2 {
     top: 45px;
     left: 125px;
 }
+
 .top .dot3 {
     top: 85px;
     left: 85px;
 }
+
 .top .dot4 {
     top: 125px;
     left: 45px;
 }
+
 .top .dot5 {
     top: 125px;
     left: 125px;
 }
+
 .bottom .dot1 {
     top: 45px;
     left: 45px;
 }
+
 .bottom .dot2 {
     top: 45px;
     left: 85px;
 }
+
 .bottom .dot3 {
     top: 45px;
     left: 125px;
 }
+
 .bottom .dot4 {
     top: 125px;
     left: 45px;
 }
+
 .bottom .dot5 {
     top: 125px;
     left: 85px;
 }
+
 .bottom .dot6 {
     top: 125px;
     left: 125px;
