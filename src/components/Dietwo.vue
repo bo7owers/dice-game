@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 // based of https://codepen.io/SteveJRobertson/pen/zxEwrK
-let cube = document.querySelector('#cube')
+let cube = document.querySelector('.cube')
 
 let min = 1
 let max = 24
@@ -19,17 +19,25 @@ function getRandom(max: number, min: number) {
     return (Math.floor(Math.random() * (max - min)) + min) * 90
 }
 
-const rollDie = () => {
-    let xRand = getRandom(max, min)
-    let yRand = getRandom(max, min)
-    console.log(xRand, yRand)
+let xRand = getRandom(max, min)
+let yRand = getRandom(max, min)
+
+let roll = ref(false)
+
+const triggerRoll = () => {
+    roll.value = true
 }
+
+const diceRoll = computed(() => {
+    if (roll.value === true)
+        return `transform: rotateX(${xRand}deg) rotateY(${yRand}deg);`
+})
 </script>
 <template>
     <h1>Click the dice to roll</h1>
-    <button class="btn btn-primary" @click="rollDie">Click me</button>
+    <button class="btn btn-primary" @click="triggerRoll">Click me</button>
     <section class="cube-container">
-        <div id="cube">
+        <div class="cube" :style="diceRoll">
             <div class="front">
                 <span class="dot dot1"></span>
             </div>
@@ -72,27 +80,27 @@ h1 {
     text-align: center;
 }
 
-#cube .front {
+.cube .front {
     transform: translateZ(100px);
 }
 
-#cube .back {
+.cube .back {
     transform: rotateX(-180deg) translateZ(100px);
 }
 
-#cube .right {
+.cube .right {
     transform: rotateY(90deg) translateZ(100px);
 }
 
-#cube .left {
+.cube .left {
     transform: rotateY(-90deg) translateZ(100px);
 }
 
-#cube .top {
+.cube .top {
     transform: rotateX(90deg) translateZ(100px);
 }
 
-#cube .bottom {
+.cube .bottom {
     transform: rotateX(-90deg) translateZ(100px);
 }
 
@@ -107,7 +115,7 @@ h1 {
     perspective-origin: 50% 100%;
 }
 
-#cube {
+.cube {
     width: 100%;
     height: 100%;
     top: 100px;
@@ -118,11 +126,11 @@ h1 {
     transition: transform 6s;
 }
 
-#cube:hover {
+.cube:hover {
     cursor: pointer;
 }
 
-#cube div {
+.cube div {
     background: hsla(0, 85%, 50%, 0.8);
     display: block;
     position: absolute;
